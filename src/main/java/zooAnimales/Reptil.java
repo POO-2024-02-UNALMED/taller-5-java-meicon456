@@ -1,59 +1,47 @@
 package zooAnimales;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Reptil extends Animal {
-    private static ArrayList<Reptil> listado = new ArrayList<>();
     private static int iguanas;
     private static int serpientes;
+    private static List<Reptil> reptiles = new ArrayList<>();
     private String colorEscamas;
     private int largoCola;
-
-    public Reptil() {
-        listado.add(this);
-    }
 
     public Reptil(String nombre, int edad, String habitat, String genero, String colorEscamas, int largoCola) {
         super(nombre, edad, habitat, genero);
         this.colorEscamas = colorEscamas;
         this.largoCola = largoCola;
-        listado.add(this);
     }
 
     public static Reptil crearIguana(String nombre, int edad, String genero) {
-        Reptil iguana = new Reptil(nombre, edad, "humedal", genero, "verde", 3);
         iguanas++;
+        Reptil iguana = new Reptil(nombre, edad, "selva", genero, "verde", 3);
+        reptiles.add(iguana);
         return iguana;
     }
 
     public static Reptil crearSerpiente(String nombre, int edad, String genero) {
-        Reptil serpiente = new Reptil(nombre, edad, "jungla", genero, "marrón", 1);
         serpientes++;
+        Reptil serpiente = new Reptil(nombre, edad, "jungla", genero, "marron", 1);
+        reptiles.add(serpiente);
         return serpiente;
     }
 
-    public static int cantidadReptiles() {
-        return listado.size();
+    public static int getIguanas() {
+        return iguanas;
     }
 
-    @Override
-    public String movimiento() {
-        return "reptar";
+    public static int getSerpientes() {
+        return serpientes;
     }
 
-    public String getColorEscamas() {
-        return colorEscamas;
-    }
-
-    public void setColorEscamas(String colorEscamas) {
-        this.colorEscamas = colorEscamas;
-    }
-
-    public int getLargoCola() {
-        return largoCola;
-    }
-
-    public void setLargoCola(int largoCola) {
-        this.largoCola = largoCola;
+    public static void mostrarReptiles() {
+        System.out.println("Listado de Reptiles:");
+        for (Reptil reptil : reptiles) {
+            System.out.println("Nombre: " + reptil.nombre + ", Edad: " + reptil.edad + " años, Genero: " + reptil.genero);
+        }
     }
 }

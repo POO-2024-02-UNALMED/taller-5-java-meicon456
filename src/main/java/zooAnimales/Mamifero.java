@@ -1,15 +1,17 @@
 package zooAnimales;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Mamifero extends Animal {
-    private static ArrayList<Mamifero> listado = new ArrayList<>();
-    private static int caballos;
-    private static int leones;
     private boolean pelaje;
     private int patas;
+    public static int caballos = 0;
+    public static int leones = 0;
+    private static List<Mamifero> listado = new ArrayList<>();
 
     public Mamifero() {
+        super();
         listado.add(this);
     }
 
@@ -21,19 +23,29 @@ public class Mamifero extends Animal {
     }
 
     public static Mamifero crearCaballo(String nombre, int edad, String genero) {
-        Mamifero caballo = new Mamifero(nombre, edad, "pradera", genero, true, 4);
         caballos++;
+        Mamifero caballo = new Mamifero(nombre, edad, "pradera", genero, true, 4);
+        listado.add(caballo);
         return caballo;
     }
 
     public static Mamifero crearLeon(String nombre, int edad, String genero) {
-        Mamifero leon = new Mamifero(nombre, edad, "selva", genero, true, 4);
         leones++;
+        Mamifero leon = new Mamifero(nombre, edad, "selva", genero, true, 4);
+        listado.add(leon);
         return leon;
     }
 
     public static int cantidadMamiferos() {
         return listado.size();
+    }
+
+    public static List<Mamifero> getListado() {
+        return listado;
+    }
+
+    public static void setListado(List<Mamifero> listado) {
+        Mamifero.listado = listado;
     }
 
     public boolean isPelaje() {
@@ -52,3 +64,4 @@ public class Mamifero extends Animal {
         this.patas = patas;
     }
 }
+

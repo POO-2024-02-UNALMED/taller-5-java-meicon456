@@ -4,44 +4,63 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Reptil extends Animal {
-    private static int iguanas;
-    private static int serpientes;
-    private static List<Reptil> reptiles = new ArrayList<>();
     private String colorEscamas;
     private int largoCola;
+    public static int iguanas = 0;
+    public static int serpientes = 0;
+    private static List<Reptil> listado = new ArrayList<>();
+
+    public Reptil() {
+        super();
+        listado.add(this);
+    }
 
     public Reptil(String nombre, int edad, String habitat, String genero, String colorEscamas, int largoCola) {
         super(nombre, edad, habitat, genero);
         this.colorEscamas = colorEscamas;
         this.largoCola = largoCola;
+        listado.add(this);
     }
 
     public static Reptil crearIguana(String nombre, int edad, String genero) {
         iguanas++;
-        Reptil iguana = new Reptil(nombre, edad, "selva", genero, "verde", 3);
-        reptiles.add(iguana);
+        Reptil iguana = new Reptil(nombre, edad, "humedal", genero, "verde", 3);
+        listado.add(iguana);
         return iguana;
     }
 
     public static Reptil crearSerpiente(String nombre, int edad, String genero) {
         serpientes++;
-        Reptil serpiente = new Reptil(nombre, edad, "jungla", genero, "marron", 1);
-        reptiles.add(serpiente);
+        Reptil serpiente = new Reptil(nombre, edad, "jungla", genero, "marron", 2);
+        listado.add(serpiente);
         return serpiente;
     }
 
-    public static int getIguanas() {
-        return iguanas;
+    public static int cantidadReptiles() {
+        return listado.size();
     }
 
-    public static int getSerpientes() {
-        return serpientes;
+    public static List<Reptil> getListado() {
+        return listado;
     }
 
-    public static void mostrarReptiles() {
-        System.out.println("Listado de Reptiles:");
-        for (Reptil reptil : reptiles) {
-            System.out.println("Nombre: " + reptil.nombre + ", Edad: " + reptil.edad + " años, Genero: " + reptil.genero);
-        }
+    public static void setListado(List<Reptil> listado) {
+        Reptil.listado = listado;
+    }
+
+    public String getColorEscamas() {
+        return colorEscamas;
+    }
+
+    public void setColorEscamas(String colorEscamas) {
+        this.colorEscamas = colorEscamas;
+    }
+
+    public int getLargoCola() {
+        return largoCola;
+    }
+
+    public void setLargoCola(int largoCola) {
+        this.largoCola = largoCola;
     }
 }

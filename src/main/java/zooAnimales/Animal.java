@@ -5,7 +5,7 @@ public class Animal {
     private int edad;
     private String habitat;
     private String genero;
-    private static int totalAnimales;
+    private static int totalAnimales = 0;
 
     public Animal() {
         totalAnimales++;
@@ -17,6 +17,28 @@ public class Animal {
         this.habitat = habitat;
         this.genero = genero;
         totalAnimales++;
+    }
+
+    public String movimiento() {
+        return "desplazarse";
+    }
+
+    public static String totalPorTipo() {
+        return "Mamiferos: " + Mamifero.cantidadMamiferos() + "\n" +
+               "Aves: " + Ave.cantidadAves() + "\n" +
+               "Reptiles: " + Reptil.cantidadReptiles() + "\n" +
+               "Peces: " + Pez.cantidadPeces() + "\n" +
+               "Anfibios: " + Anfibio.cantidadAnfibios();
+    }
+
+    @Override
+    public String toString() {
+        return "Mi nombre es " + nombre + ", tengo una edad de " + edad + 
+               ", habito en " + habitat + " y mi genero es " + genero;
+    }
+
+    public static int getTotalAnimales() {
+        return totalAnimales;
     }
 
     public String getNombre() {
@@ -49,30 +71,5 @@ public class Animal {
 
     public void setGenero(String genero) {
         this.genero = genero;
-    }
-
-    public static int getTotalAnimales() {
-        return totalAnimales;
-    }
-
-    public static void setTotalAnimales(int totalAnimales) {
-        Animal.totalAnimales = totalAnimales;
-    }
-
-    public String movimiento() {
-        return "desplazarse";
-    }
-
-    @Override
-    public String toString() {
-        return "Mi nombre es " + nombre + ", tengo una edad de " + edad + ", habito en " + habitat + " y mi genero es " + genero;
-    }
-
-    public static String totalPorTipo() {
-        return "Mamiferos: " + Mamifero.cantidadMamiferos() + "\n" +
-               "Aves: " + Ave.cantidadAves() + "\n" +
-               "Reptiles: " + Reptil.cantidadReptiles() + "\n" +
-               "Peces: " + Pez.cantidadPeces() + "\n" +
-               "Anfibios: " + Anfibio.cantidadAnfibios();
     }
 }

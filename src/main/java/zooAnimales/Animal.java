@@ -1,16 +1,15 @@
 package zooAnimales;
 
-import gestion.Zona;
-
 public class Animal {
-    private static int totalAnimales;
     private String nombre;
     private int edad;
     private String habitat;
     private String genero;
-    private Zona zona;
+    private static int totalAnimales = 0;
 
-    public Animal() {}
+    public Animal() {
+        totalAnimales++;
+    }
 
     public Animal(String nombre, int edad, String habitat, String genero) {
         this.nombre = nombre;
@@ -20,28 +19,22 @@ public class Animal {
         totalAnimales++;
     }
 
-    public static String totalPorTipo() {
-        return "Mamíferos: " + Mamifero.cantidadMamiferos() +
-               "\nAves: " + Ave.cantidadAves() +
-               "\nReptiles: " + Reptil.cantidadReptiles() +
-               "\nPeces: " + Pez.cantidadPeces() +
-               "\nAnfibios: " + Anfibio.cantidadAnfibios();
-    }
-
     public String movimiento() {
         return "desplazarse";
     }
 
+    public static String totalPorTipo() {
+        return "Mamiferos: " + Mamifero.cantidadMamiferos() + "\n" +
+               "Aves: " + Ave.cantidadAves() + "\n" +
+               "Reptiles: " + Reptil.cantidadReptiles() + "\n" +
+               "Peces: " + Pez.cantidadPeces() + "\n" +
+               "Anfibios: " + Anfibio.cantidadAnfibios();
+    }
+
     @Override
     public String toString() {
-        if (zona != null) {
-            return "Mi nombre es " + nombre + ", tengo una edad de " + edad +
-                   ", habito en " + habitat + " y mi género es " + genero +
-                   ", la zona en la que me ubico es " + zona.getNombre() +
-                   ", en el " + zona.getZoo().getNombre() + ".";
-        }
-        return "Mi nombre es " + nombre + ", tengo una edad de " + edad +
-               ", habito en " + habitat + " y mi género es " + genero + ".";
+        return "Mi nombre es " + nombre + ", tengo una edad de " + edad + 
+               ", habito en " + habitat + " y mi genero es " + genero;
     }
 
     public static int getTotalAnimales() {
@@ -78,13 +71,5 @@ public class Animal {
 
     public void setGenero(String genero) {
         this.genero = genero;
-    }
-
-    public Zona getZona() {
-        return zona;
-    }
-
-    public void setZona(Zona zona) {
-        this.zona = zona;
     }
 }
